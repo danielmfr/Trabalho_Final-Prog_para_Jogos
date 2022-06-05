@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/characters/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/levels/Phase1.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://wall.tres" type="TileSet" id=5]
+
+[node name="Fase" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 37, 45 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 600, 500 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 600, 60 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2008, 864 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1448, 898 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1142, 1228 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1356, 442 )
+
+[node name="Enemy7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 434, 914 )
+
+[node name="Enemy8" parent="." instance=ExtResource( 2 )]
+position = Vector2( -258, 571 )
+
+[node name="Enemy9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1092, 877 )
+
+[node name="Enemy10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1494, 1245 )
+
+[node name="Enemy11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1813, 991 )
+
+[node name="Enemy12" parent="." instance=ExtResource( 2 )]
+position = Vector2( 183, 1181 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.960784, 0.945098, 0.945098, 1 )
+self_modulate = Color( 0.956863, 0.945098, 0.0313726, 1 )
+position = Vector2( 949, 639 )
+scale = Vector2( 42.0938, 28.9688 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 5 )
+format = 1
+tile_data = PoolIntArray( -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, 65531, 0, 0, 65532, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 131067, 0, 0, 65551, 0, 0, 196603, 0, 0, 131087, 0, 0, 262138, 0, 0, 262139, 0, 0, 196623, 0, 0, 327674, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 393210, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 458746, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393238, 0, 0, 524282, 0, 0, 458765, 0, 0, 458774, 0, 0, 589818, 0, 0, 524301, 0, 0, 524306, 0, 0, 524310, 0, 0, 655354, 0, 0, 589837, 0, 0, 589842, 0, 0, 589846, 0, 0, 720890, 0, 0, 720891, 0, 0, 720892, 0, 0, 720893, 0, 0, 655365, 0, 0, 655373, 0, 0, 655378, 0, 0, 655382, 0, 0, 786429, 0, 0, 786430, 0, 0, 720901, 0, 0, 720909, 0, 0, 720914, 0, 0, 720918, 0, 0, 851966, 0, 0, 851967, 0, 0, 786437, 0, 0, 786445, 0, 0, 786450, 0, 0, 786454, 0, 0, 786455, 0, 0, 786456, 0, 0, 786457, 0, 0, 786458, 0, 0, 786459, 0, 0, 786460, 0, 0, 786461, 0, 0, 786462, 0, 0, 786463, 0, 0, 786464, 0, 0, 786465, 0, 0, 917503, 0, 0, 851968, 0, 0, 851973, 0, 0, 851981, 0, 0, 851986, 0, 0, 852000, 0, 0, 852001, 0, 0, 917504, 0, 0, 917509, 0, 0, 917516, 0, 0, 917517, 0, 0, 917522, 0, 0, 917528, 0, 0, 917529, 0, 0, 917530, 0, 0, 917531, 0, 0, 917532, 0, 0, 917533, 0, 0, 917536, 0, 0, 983040, 0, 0, 983045, 0, 0, 983058, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983069, 0, 0, 983072, 0, 0, 1114110, 0, 0, 1114111, 0, 0, 1048576, 0, 0, 1048581, 0, 0, 1048603, 0, 0, 1048604, 0, 0, 1048605, 0, 0, 1048607, 0, 0, 1048608, 0, 0, 1179646, 0, 0, 1114139, 0, 0, 1114143, 0, 0, 1245181, 0, 0, 1245182, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179678, 0, 0, 1179679, 0, 0, 1310717, 0, 0, 1245213, 0, 0, 1245214, 0, 0, 1376253, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1441789, 0, 0, 1441790, 0, 0, 1441791, 0, 0, 1376256, 0, 0, 1376257, 0, 0, 1376258, 0, 0, 1376259, 0, 0, 1376260, 0, 0, 1376261, 0, 0, 1376262, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0 )
