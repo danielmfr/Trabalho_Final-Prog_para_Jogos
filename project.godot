@@ -14,6 +14,10 @@ config/name="Trabalho Final"
 run/main_scene="res://Scenes/levels/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scenes/levels/Phase1.gd"
+
 [input]
 
 up={

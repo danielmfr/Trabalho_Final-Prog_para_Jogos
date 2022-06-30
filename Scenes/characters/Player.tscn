@@ -35,4 +35,9 @@ current = true
 zoom = Vector2( 0.8, 0.8 )
 smoothing_enabled = true
 
+[node name="tempo_recarga" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="tempo_recarga" to="." method="_on_tempo_recarga_timeout"]
