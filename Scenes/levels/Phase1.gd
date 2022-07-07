@@ -2,6 +2,8 @@ extends Node2D
 
 var criacao_no_pai = null
 
+var jogador = null
+
 #singleton
 func instance_node(node, location, parent):
 	var node_instance = node.instance()

@@ -1,12 +1,15 @@
 extends KinematicBody2D
 
-var movespeed = 500
+var movespeed = 400
 var bullet = preload("res://Scenes/props/Bullet.tscn")
 
 var recarregado = true
 
 func _ready():
-	pass
+	Global.jogador = self
+
+func _enter_tree():
+	Global.jogador = null
 
 func _physics_process(delta):
 	var motion = Vector2()
