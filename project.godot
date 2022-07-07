@@ -8,6 +8,88 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "BehaviorTreeBaseNode",
+"class": "BTAlwaysSucceed",
+"language": "GDScript",
+"path": "res://behavior_tree/decorator/behavior_tree_always_succeed.gd"
+}, {
+"base": "BehaviorTreeBaseNode",
+"class": "BTCallSimpleNodeFunction",
+"language": "GDScript",
+"path": "res://behavior_tree/leaves/bt_call_simple_func.gd"
+}, {
+"base": "BehaviorTreeBaseNode",
+"class": "BTCheckBlackboardProperty",
+"language": "GDScript",
+"path": "res://behavior_tree/leaves/bt_check_blackboard_prop.gd"
+}, {
+"base": "BehaviorTreeBaseNode",
+"class": "BTInverter",
+"language": "GDScript",
+"path": "res://behavior_tree/decorator/behavior_tree_inverter.gd"
+}, {
+"base": "BehaviorTreeBaseNode",
+"class": "BTLeaf",
+"language": "GDScript",
+"path": "res://behavior_tree/leaves/behavior_tree_leaf.gd"
+}, {
+"base": "BehaviorTreeBaseNode",
+"class": "BTSelector",
+"language": "GDScript",
+"path": "res://behavior_tree/composite/behavior_tree_selector.gd"
+}, {
+"base": "BehaviorTreeBaseNode",
+"class": "BTSequence",
+"language": "GDScript",
+"path": "res://behavior_tree/composite/behavior_tree_sequence.gd"
+}, {
+"base": "BehaviorTreeBaseNode",
+"class": "BTSetBlackBoardFromNodePropertyOrFunction",
+"language": "GDScript",
+"path": "res://behavior_tree/leaves/bt_set_blackboard_from_prop.gd"
+}, {
+"base": "Node",
+"class": "BehaviorTree",
+"language": "GDScript",
+"path": "res://behavior_tree/behavior_tree.gd"
+}, {
+"base": "BehaviorTreeNode",
+"class": "BehaviorTreeBaseNode",
+"language": "GDScript",
+"path": "res://behavior_tree/behavior_tree_base_node.gd"
+}, {
+"base": "Node",
+"class": "BehaviorTreeNode",
+"language": "GDScript",
+"path": "res://behavior_tree/behavior_tree_node.gd"
+}, {
+"base": "Reference",
+"class": "BehaviorTreeResult",
+"language": "GDScript",
+"path": "res://behavior_tree/behavior_tree_result.gd"
+}, {
+"base": "Node",
+"class": "BlackBoard",
+"language": "GDScript",
+"path": "res://behavior_tree/blackboard.gd"
+} ]
+_global_script_class_icons={
+"BTAlwaysSucceed": "res://behavior_tree/decorator/behavior_tree_always_succeed.svg",
+"BTCallSimpleNodeFunction": "",
+"BTCheckBlackboardProperty": "",
+"BTInverter": "res://behavior_tree/decorator/behavior_tree_inverter.svg",
+"BTLeaf": "res://behavior_tree/leaves/behavior_tree_leaf.svg",
+"BTSelector": "res://behavior_tree/composite/behavior_tree_selector.svg",
+"BTSequence": "res://behavior_tree/composite/behavior_tree_sequence.svg",
+"BTSetBlackBoardFromNodePropertyOrFunction": "",
+"BehaviorTree": "res://behavior_tree/behavior_tree.svg",
+"BehaviorTreeBaseNode": "",
+"BehaviorTreeNode": "",
+"BehaviorTreeResult": "",
+"BlackBoard": "res://behavior_tree/blackboard.svg"
+}
+
 [application]
 
 config/name="Trabalho Final"

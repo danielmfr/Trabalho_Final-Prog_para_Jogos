@@ -1,0 +1,136 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Scenes/characters/Enemies/Boss.gd" type="Script" id=1]
+[ext_resource path="res://Assets/textures/Enemy3/Wraith_011.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/characters/Enemies/Area_Close.gd" type="Script" id=3]
+[ext_resource path="res://behavior_tree/blackboard.gd" type="Script" id=4]
+[ext_resource path="res://behavior_tree/behavior_tree.gd" type="Script" id=5]
+[ext_resource path="res://behavior_tree/composite/behavior_tree_selector.gd" type="Script" id=6]
+[ext_resource path="res://behavior_tree/leaves/bt_set_blackboard_from_prop.gd" type="Script" id=7]
+[ext_resource path="res://behavior_tree/composite/behavior_tree_sequence.gd" type="Script" id=8]
+[ext_resource path="res://behavior_tree/leaves/bt_check_blackboard_prop.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/characters/Enemies/ShootLeaf.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/characters/Enemies/Move.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/characters/Enemies/Boss_Heal.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/characters/Enemies/Heal_Wait.gd" type="Script" id=13]
+[ext_resource path="res://Scenes/characters/Enemies/Look_Player.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/characters/Enemies/Charge.gd" type="Script" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14, 20 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 200.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 18, 28 )
+
+[node name="Boss" type="KinematicBody2D" groups=["enemy"]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="Area_Close" type="Area2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Close"]
+shape = SubResource( 2 )
+
+[node name="Death_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Area"]
+shape = SubResource( 3 )
+
+[node name="Shoot_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Heal_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Charge_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BehaviorTree" type="Node" parent="."]
+script = ExtResource( 5 )
+agent = NodePath("..")
+blackboard = NodePath("../BlackBoard")
+
+[node name="BTSequence" type="Node" parent="BehaviorTree"]
+script = ExtResource( 8 )
+
+[node name="Record_Health" type="Node" parent="BehaviorTree/BTSequence"]
+script = ExtResource( 7 )
+node = NodePath("../../..")
+node_property_or_function_name = "health_low"
+blackboard_property_name = "health_low"
+
+[node name="Record_Player_Close" type="Node" parent="BehaviorTree/BTSequence"]
+script = ExtResource( 7 )
+node = NodePath("../../../Area_Close")
+node_property_or_function_name = "player_is_in_area"
+blackboard_property_name = "player_close"
+
+[node name="Look_Player" type="Node" parent="BehaviorTree/BTSequence"]
+script = ExtResource( 14 )
+
+[node name="Heal_or_Move" type="Node" parent="BehaviorTree/BTSequence"]
+script = ExtResource( 6 )
+
+[node name="Heal_Sequence" type="Node" parent="BehaviorTree/BTSequence/Heal_or_Move"]
+script = ExtResource( 8 )
+
+[node name="Check_Health" type="Node" parent="BehaviorTree/BTSequence/Heal_or_Move/Heal_Sequence"]
+script = ExtResource( 9 )
+blackboard_property_name = "health_low"
+
+[node name="Heal" type="Node" parent="BehaviorTree/BTSequence/Heal_or_Move/Heal_Sequence"]
+script = ExtResource( 12 )
+
+[node name="Wait" type="Node" parent="BehaviorTree/BTSequence/Heal_or_Move/Heal_Sequence"]
+script = ExtResource( 13 )
+
+[node name="Charge_Sequence" type="Node" parent="BehaviorTree/BTSequence/Heal_or_Move"]
+script = ExtResource( 8 )
+
+[node name="Check_Player_Close" type="Node" parent="BehaviorTree/BTSequence/Heal_or_Move/Charge_Sequence"]
+script = ExtResource( 9 )
+blackboard_property_name = "player_close"
+
+[node name="Charge" type="Node" parent="BehaviorTree/BTSequence/Heal_or_Move/Charge_Sequence"]
+script = ExtResource( 16 )
+
+[node name="Move" type="Node" parent="BehaviorTree/BTSequence/Heal_or_Move"]
+script = ExtResource( 11 )
+
+[node name="BTSelector" type="Node" parent="BehaviorTree/BTSequence"]
+script = ExtResource( 6 )
+
+[node name="Shoot_Sequence" type="Node" parent="BehaviorTree/BTSequence/BTSelector"]
+script = ExtResource( 8 )
+
+[node name="Check_Player_Close" type="Node" parent="BehaviorTree/BTSequence/BTSelector/Shoot_Sequence"]
+script = ExtResource( 9 )
+blackboard_property_name = "player_close"
+
+[node name="Shoot" type="Node" parent="BehaviorTree/BTSequence/BTSelector/Shoot_Sequence"]
+script = ExtResource( 10 )
+
+[node name="BlackBoard" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="timer_recuo" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="body_entered" from="Area_Close" to="Area_Close" method="_on_Area_Close_body_entered"]
+[connection signal="body_exited" from="Area_Close" to="Area_Close" method="_on_Area_Close_body_exited"]
+[connection signal="area_entered" from="Death_Area" to="." method="_on_Death_Area_area_entered"]
+[connection signal="timeout" from="timer_recuo" to="." method="_on_timer_recuo_timeout"]

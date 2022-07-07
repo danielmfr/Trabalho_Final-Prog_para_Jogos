@@ -22,12 +22,11 @@ func _physics_process(delta):
 
 #quando o inimigo receber dano
 func _on_Area2D_area_entered(area):
-	if area.is_in_group("dano"):
-		print("atingido")
-		vida -=1
-		motion = -motion * recuo
-		atordoado = true
-		$timer_recuo.start()
+	print("atingido")
+	vida -=1
+	motion = -motion * recuo
+	atordoado = true
+	$timer_recuo.start()
 	
 
 func _on_timer_recuo_timeout():
