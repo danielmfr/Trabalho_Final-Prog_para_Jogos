@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
 var motion = Vector2.ZERO
-onready var MAX_SPEED = 200
+var MAX_SPEED = 100
 onready var arrive_radius = 50
 onready var current_speed = MAX_SPEED
 
 onready var MAX_HEALTH = 10
 onready var health = MAX_HEALTH
-var recuo = 3
+var recuo = 2
 var atordoado = false
 # Flag para ativar o comportamento de cura
 # Controlado em damage_self()
@@ -34,29 +34,25 @@ onready var charge_sprite = preload("res://Scenes/characters/Enemies/Charge_Part
 onready var player_detection_area = $Area_Close
 onready var player := get_tree().get_root().get_node("Fase").get_node("Player")
 
-func _ready():
-	pass
-	
-func _physics_process(delta):
-	#var Player = get_path()
-	
-	#var player 
-	
-	
-	
-	pass
+func _physics_process(delta):	
+	if Global.jogador.global_position < global_position:
+		get_node( "Sprite" ).set_flip_h( true )
+	if Global.jogador.global_position > global_position:
+		get_node( "Sprite" ).set_flip_h( false )
+			
 
-func seek(target: Vector2, max_speed):
+	
+
+func seek( max_speed):
 	if atordoado == false:
-		var desired = target - self.global_position
+		var desired = Global.jogador.global_position - self.global_position
 		desired = desired.normalized()
 		desired *= max_speed
-		
 		var steer = desired - motion
-		#print(steer)
 		steer = steer.normalized()
 		steer *= max_speed
 		apply_motion(steer)
+		
 
 func arrive_force(target: Vector2, max_speed):
 	var desired = target - self.global_position
@@ -80,17 +76,12 @@ func arrive_force(target: Vector2, max_speed):
 func apply_motion(_motion: Vector2):
 	self.motion += _motion
 
-
 func damage_self(amount):
 	health -= amount
 	if health <= 0:
-		die()
+		queue_free()
 	if self.health <= health_low_threshold:
 		self.health_low = true
-
-func die():
-	print('morreu')
-	queue_free()
 
 
 func shoot(spawn_position, target):

@@ -39,5 +39,5 @@ smoothing_enabled = true
 wait_time = 0.2
 one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="tempo_recarga" to="." method="_on_tempo_recarga_timeout"]

@@ -36,11 +36,15 @@ func _physics_process(delta):
 func _on_tempo_recarga_timeout():
 	recarregado = true
 	
-func _on_Area2D_body_entered(body):
-	if 'Enemy' in body.name:
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("enemy"):
 		death()
 
 func death():
 	get_tree().reload_current_scene()
 
 
+
+
+
+		

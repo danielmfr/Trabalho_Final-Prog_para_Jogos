@@ -47,7 +47,7 @@ func tick(delta:float, blackboard: BlackBoard, result:BehaviorTreeResult) -> voi
 	elif state == States.CHARGING:
 		
 		if not enemy.charge_timer.is_stopped():
-			enemy.seek(enemy.player.global_position, enemy.charge_speed)
+			enemy.seek(enemy.charge_speed)
 			enemy.move_and_collide(enemy.motion*delta)
 			result.set_running(self)
 		# Finalizar a corrida e resetar as flags
