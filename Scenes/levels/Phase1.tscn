@@ -46,6 +46,7 @@ tile_data = PoolIntArray( -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, 
 position = Vector2( 1001, 1203 )
 
 [node name="timer_spawn_inimigo" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="timer_spawn_inimigo" to="." method="_on_timer_spawn_inimigo_timeout"]
