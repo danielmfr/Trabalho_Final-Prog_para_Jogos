@@ -6,6 +6,8 @@ var jogador = null
 
 var pontos = 0
 
+var recorde = 0
+
 #singleton
 func instance_node(node, location, parent):
 	var node_instance = node.instance()

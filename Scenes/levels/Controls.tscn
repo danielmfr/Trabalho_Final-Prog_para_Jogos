@@ -55,7 +55,7 @@ align = 1
 margin_top = 329.0
 margin_right = 1024.0
 margin_bottom = 343.0
-text = "SHOOT -> SPACE"
+text = "SHOOT -> Left  Mouse"
 align = 1
 
 [node name="Button" type="Button" parent="."]
