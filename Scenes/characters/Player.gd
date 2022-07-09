@@ -39,11 +39,12 @@ func _on_tempo_recarga_timeout():
 	
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("enemy"):
+		visible = false
+		morto = true
+		print("acertou o player")
 		death()
 
 func death():
-	visible = false
-	morto = true
 	yield(get_tree().create_timer(1),"timeout")
 	get_tree().reload_current_scene()
 

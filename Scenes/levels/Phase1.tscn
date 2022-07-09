@@ -17,7 +17,7 @@ func _ready():
 func _exit_tree():
 	Global.criacao_no_pai = null
 
-
+#spawnar inimigos
 func _on_timer_spawn_inimigo_timeout():
 	var posicao_inimigo = Vector2(60,50)
 	Global.instance_node(inimigo_1, posicao_inimigo, self)

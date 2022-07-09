@@ -79,6 +79,7 @@ func apply_motion(_motion: Vector2):
 func damage_self(amount):
 	health -= amount
 	if health <= 0:
+		Global.pontos += 70
 		queue_free()
 	if self.health <= health_low_threshold:
 		self.health_low = true

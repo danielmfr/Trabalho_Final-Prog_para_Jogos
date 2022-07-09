@@ -30,14 +30,12 @@ shape = SubResource( 1 )
 position = Vector2( 3.33333, 0 )
 shape = SubResource( 2 )
 
-[node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
-current = true
-zoom = Vector2( 0.8, 0.8 )
-smoothing_enabled = true
-
 [node name="tempo_recarga" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="tempo_recarga" to="." method="_on_tempo_recarga_timeout"]

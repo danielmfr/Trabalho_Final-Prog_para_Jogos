@@ -26,6 +26,7 @@ func _physics_process(delta):
 	
 	#verificar se o inimigo está morto
 	if vida <= 0:
+		Global.pontos += 5
 		queue_free()
 
 #quando o inimigo receber dano
