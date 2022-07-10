@@ -55,7 +55,7 @@ func seek( max_speed):
 		
 
 func arrive_force(target: Vector2, max_speed):
-	var desired = target - self.global_position
+	var desired = target - global_position
 	
 	var d = desired.length()
 	desired = desired.normalized()
@@ -122,7 +122,7 @@ func spawn_charge_particle(spawn_position):
 func _on_Death_Area_area_entered(area):
 	if area.is_in_group("dano"):
 		area.queue_free()
-		damage_self(1)
+		damage_self(Global.jogador.dano)
 		motion = -motion * recuo
 		atordoado = true
 		$timer_recuo.start()
