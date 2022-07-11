@@ -14,6 +14,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+movespeed = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 position = Vector2( 1, -1 )

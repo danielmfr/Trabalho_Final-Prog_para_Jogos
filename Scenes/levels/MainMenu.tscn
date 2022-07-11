@@ -1,50 +1,49 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/levels/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/textures/menu.png" type="Texture" id=2]
+[ext_resource path="res://Assets/textures/INICIARBTNORMAL.png" type="Texture" id=3]
+[ext_resource path="res://Assets/textures/INICIARBTPRESS.png" type="Texture" id=4]
+[ext_resource path="res://Assets/textures/CONTROLESBTNORMAL.png" type="Texture" id=5]
+[ext_resource path="res://Assets/textures/CONTROLESBTPRESS.png" type="Texture" id=6]
+[ext_resource path="res://Assets/textures/SAIRBTNORMAL.png" type="Texture" id=7]
+[ext_resource path="res://Assets/textures/SAIRBTPRESS.png" type="Texture" id=8]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.133333, 0.129412, 0.129412, 1 )
-
-[node name="Play" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -160.0
+[node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
-margin_bottom = -140.0
-text = "Play Game"
+margin_bottom = 40.0
+texture = ExtResource( 2 )
 
-[node name="Controls" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.5
-margin_top = -10.0
-margin_right = 32.5
-margin_bottom = 10.0
-text = "Controls"
+[node name="Play" type="TextureButton" parent="."]
+margin_left = 409.0
+margin_top = 301.0
+margin_right = 584.0
+margin_bottom = 369.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 
-[node name="Quit" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = 150.0
-margin_right = 20.0
-margin_bottom = 10.0
-text = "Quit"
+[node name="Controles" type="TextureButton" parent="."]
+margin_left = 426.0
+margin_top = 394.0
+margin_right = 601.0
+margin_bottom = 462.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 429.0
+margin_top = 467.0
+margin_right = 604.0
+margin_bottom = 535.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Controls" to="." method="_on_Controls_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Controles" to="." method="_on_Controles_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

@@ -41,7 +41,6 @@ func _physics_process(delta):
 		get_node( "Sprite" ).set_flip_h( false )
 			
 
-	
 
 func seek( max_speed):
 	if atordoado == false:
@@ -127,6 +126,5 @@ func _on_Death_Area_area_entered(area):
 		atordoado = true
 		$timer_recuo.start()
 	
-
 func _on_timer_recuo_timeout():
 	atordoado = false

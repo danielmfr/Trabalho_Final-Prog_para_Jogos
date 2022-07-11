@@ -26,8 +26,7 @@ func moviemto_basico_inimigo(delta):
 		self.global_position += motion * delta
 	
 
-	#colisão com as paredes
-	move_and_collide(motion)
+
 	
 #quando o inimigo receber dano
 func _on_Area2D_area_entered(area):
