@@ -34,7 +34,7 @@ onready var charge_sprite = preload("res://Scenes/characters/Enemies/Charge_Part
 onready var player_detection_area = $Area_Close
 onready var player := get_tree().get_root().get_node("Fase").get_node("Player")
 
-func _physics_process(delta):	
+func _process(delta):	
 	if Global.jogador.global_position < global_position:
 		get_node( "Sprite" ).set_flip_h( true )
 	if Global.jogador.global_position > global_position:

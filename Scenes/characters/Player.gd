@@ -59,6 +59,7 @@ func _on_tempo_recarga_timeout():
 	recarregado = true
 	$tempo_recarga.wait_time = tempo_recarga
 	
+#retornar os atributos do jogador no final do tempo de efeito do upgrade
 func _on_tempo_recarga_col_timeout():
 	if reset_poder.find("tempo_recarga") != null:
 		tempo_recarga = padrao_tempo_recarga
