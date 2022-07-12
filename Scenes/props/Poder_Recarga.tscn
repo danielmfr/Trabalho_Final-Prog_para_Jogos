@@ -37,7 +37,7 @@ tracks/0/keys = {
 }
 
 [node name="Poder_Recarga" type="Sprite"]
-modulate = Color( 0.537255, 0.968627, 0.509804, 1 )
+modulate = Color( 0.231373, 0.847059, 0.717647, 1 )
 rotation = 0.785398
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
@@ -48,6 +48,7 @@ valor_variavel_jogador = 0.05
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="coll" type="CollisionShape2D" parent="hitbox"]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]

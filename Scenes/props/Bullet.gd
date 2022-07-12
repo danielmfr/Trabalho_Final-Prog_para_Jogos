@@ -3,7 +3,6 @@ extends Area2D
 const speed = 800
 var dir_unica = true
 var velocity = Vector2(1,0)
-
 var dano
 
 func _process(delta):
