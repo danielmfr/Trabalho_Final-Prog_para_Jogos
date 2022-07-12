@@ -5,7 +5,7 @@ var MAX_SPEED = 100
 onready var arrive_radius = 50
 onready var current_speed = MAX_SPEED
 
-onready var MAX_HEALTH = 10
+onready var MAX_HEALTH = 20
 onready var health = MAX_HEALTH
 var recuo = 2
 var atordoado = false
@@ -13,8 +13,8 @@ var atordoado = false
 # Controlado em damage_self()
 # E em heal()
 onready var health_low = false
-onready var health_low_threshold = 4 # Valor que decide quando o boss começa a se curar
-onready var health_high_threshold = 6 # Valor que decide quando o boss para de se curar
+onready var health_low_threshold = 8 # Valor que decide quando o boss começa a se curar
+onready var health_high_threshold = 15 # Valor que decide quando o boss para de se curar
 var heal_time = 0.8 # Valor controla quando tempo cada heal demora
 var heal_cooldown = 8.0 # Valor que controla de quanto em quanto tempo demora para poder se curar de novo
 onready var heal_timer = $Heal_Timer
@@ -39,7 +39,7 @@ func _physics_process(delta):
 		get_node( "Sprite" ).set_flip_h( true )
 	if Global.jogador.global_position > global_position:
 		get_node( "Sprite" ).set_flip_h( false )
-			
+	
 
 
 func seek( max_speed):

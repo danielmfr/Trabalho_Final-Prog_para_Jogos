@@ -4,7 +4,7 @@ extends BTLeaf
 func tick(delta:float, blackboard: BlackBoard, result:BehaviorTreeResult) -> void:
 	var enemy = blackboard.agent
 	if enemy.heal_timer.is_stopped():
-		var low_health = enemy.heal(1)
+		var low_health = enemy.heal(3)
 		#print(enemy.health)
 		if low_health:
 			enemy.heal_timer.start(enemy.heal_time)

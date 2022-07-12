@@ -10,6 +10,14 @@ var padrao_tempo_recarga = tempo_recarga
 var dano = 1
 var dano_padrao = dano
 
+var health = 3
+var health_padrao = health
+
+var invincibility = false
+var invincibility_cooldown = 1.2
+onready var invincibility_timer = $Invincibility_Timer
+onready var invincibility_particle = preload("res://Scenes/characters/Invincibility_Particle.tscn")
+
 var reset_poder = []
 
 var morto = false
@@ -19,6 +27,10 @@ func _ready():
 
 func _enter_tree():
 	Global.jogador = null
+	
+func _process(delta):
+	if health == 3:
+		Global.vidas = "F F F"
 
 func _physics_process(delta):
 	var motion = Vector2()
@@ -57,16 +69,37 @@ func _on_tempo_recarga_col_timeout():
 	
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("enemy"):
-		if Global.recorde < Global.pontos:
-			Global.recorde = Global.pontos
-		visible = false
-		morto = true
+		if !invincibility:
+			health -= 1
+			if health == 2:
+				Global.vidas = "F F"
+			elif health == 1:
+				Global.vidas = "F"
+			invincibility = true
+			$Invincibility_Timer.start(invincibility_cooldown)
+			spawn_invincibility_particles(self)
+			if health <= 0:
+				Global.vidas = " "
+				visible = false
+				morto = true
+				death()
+
+
 		print("acertou o player")
-		death()
+
+func spawn_invincibility_particles(spawn_position):
+	for i in range(5):
+		var new_particle = invincibility_particle.instance()
+		var randVec = Vector2(rand_range(-50, 50), rand_range(-50, 50))
+		new_particle.position = Vector2(0, 0) + randVec
+		#new_particle.look_at(target.global_position)
+		add_child(new_particle)
 
 func death():
-	Global.pontos = 0
+	if Global.recorde < Global.pontos:
+		Global.recorde = Global.pontos
 	yield(get_tree().create_timer(1),"timeout")
-	get_tree().reload_current_scene()
+	get_tree().change_scene("res://Scenes/levels/Game_Over.tscn")
 
-
+func _on_Invincibility_Timer_timeout():
+	invincibility = false

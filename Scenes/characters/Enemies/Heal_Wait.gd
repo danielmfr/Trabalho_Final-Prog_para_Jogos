@@ -19,4 +19,4 @@ func tick(delta:float, blackboard: BlackBoard, result:BehaviorTreeResult) -> voi
 			result.set_running(self)
 	
 	"""
-	pass
+

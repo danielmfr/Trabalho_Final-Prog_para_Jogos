@@ -5,4 +5,4 @@
 [node name="Poder_Dano" instance=ExtResource( 1 )]
 modulate = Color( 0.486275, 0.129412, 0.596078, 1 )
 modificador_variavel_jogador = "dano"
-valor_variavel_jogador = 2.0
+valor_variavel_jogador = 3.0

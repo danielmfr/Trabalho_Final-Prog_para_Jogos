@@ -8,6 +8,8 @@ var pontos = 0
 
 var recorde = 0
 
+var vidas = "F F F"
+
 #singleton
 func instance_node(node, location, parent):
 	var node_instance = node.instance()

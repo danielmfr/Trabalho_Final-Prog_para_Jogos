@@ -79,7 +79,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="tempo_recarga_col" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -90,6 +90,9 @@ autoplay = "Respiração"
 anims/RESET = SubResource( 3 )
 "anims/Respiração" = SubResource( 4 )
 
+[node name="Invincibility_Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="tempo_recarga" to="." method="_on_tempo_recarga_timeout"]
 [connection signal="timeout" from="tempo_recarga_col" to="." method="_on_tempo_recarga_col_timeout"]
+[connection signal="timeout" from="Invincibility_Timer" to="." method="_on_Invincibility_Timer_timeout"]

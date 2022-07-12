@@ -8,7 +8,7 @@ export (int) var movespeed = 200
 
 func _process(delta):
 		if vida <= 0:
-			Global.pontos += 5
+			Global.pontos += 10
 			queue_free()
 			
 func moviemto_basico_inimigo(delta):

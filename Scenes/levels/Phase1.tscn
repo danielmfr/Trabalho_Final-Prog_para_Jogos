@@ -1,11 +1,12 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Scenes/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Portal_Inimigos.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/props/Poder_Recarga.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/props/Recupera_Vida.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/characters/Enemy2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/textures/Tiles/Dungeon-tileset.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/characters/Enemy_Base.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/textures/Enemy2/Wraith_012.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/props/Poder_Recarga.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/props/Poder_Dano.tscn" type="PackedScene" id=8]
 
 [sub_resource type="GDScript" id=1]
@@ -20,6 +21,7 @@ export(Array, PackedScene) var poderes
 func _ready():
 	Global.criacao_no_pai = self
 	Global.pontos = 0
+	Global.vidas = \"F F F\"
 	
 func _exit_tree():
 	Global.criacao_no_pai = null
@@ -28,85 +30,60 @@ func _exit_tree():
 func _on_timer_spawn_inimigo_timeout():
 	rgn.randomize()
 	var portalRandom = rgn.randi_range(1, 3) 
+	var posicao_inimigo
 	match portalRandom:
 		1:
-			var posicao_inimigo = Vector2(80,70)
-			var numero_inimigos = round(rand_range(-1,inimigos.size()-1))
-			Global.instance_node(inimigos[numero_inimigos], posicao_inimigo, self)
+			posicao_inimigo = Vector2(80,70)
 		2:
-			var posicao_inimigo = Vector2(300,1100)
-			var numero_inimigos = round(rand_range(-1,inimigos.size()-1))
-			Global.instance_node(inimigos[numero_inimigos], posicao_inimigo, self)
+			posicao_inimigo = Vector2(300,1100)
 		3:
-			var posicao_inimigo = Vector2(1300,500)
-			var numero_inimigos = round(rand_range(-1,inimigos.size()-1))
-			Global.instance_node(inimigos[numero_inimigos], posicao_inimigo, self)
+			posicao_inimigo = Vector2(1300,500)
+			
+	var numero_inimigos = round(rand_range(-1,inimigos.size()-1))
+	Global.instance_node(inimigos[numero_inimigos], posicao_inimigo, self)	
 		
 		
 		
 func _on_timer_dificuldade_timeout():
-	if $timer_spawn_inimigo.wait_time > 0.5:
+	if $timer_spawn_inimigo.wait_time > 1.5:
 		$timer_spawn_inimigo.wait_time -= 0.1
 
 
 func _on_timer_spawn_boss_timeout():
-	var posicao_boss = Vector2(1300,500)
+	rgn.randomize()
+	var portalRandom = rgn.randi_range(1, 3) 
+	var posicao_boss
+	match portalRandom:
+		1:
+			posicao_boss = Vector2(80,70)
+		2:
+			posicao_boss = Vector2(300,1100)
+		3:
+			posicao_boss = Vector2(1300,500)
+			
 	Global.instance_node(boss, posicao_boss, self)
 
 
 func _on_timer_spawn_poder_timeout():
 	rgn.randomize()
 	var poderLocalRandom = rgn.randi_range(1, 5) 
+	var posicao_poderes
 	match poderLocalRandom:
 		1:
-			var posicao_poderes = Vector2(700,500)
-			var numero_poderes = round(rand_range(-1,poderes.size()-1))
-			Global.instance_node(poderes[numero_poderes], posicao_poderes, self)
+			posicao_poderes = Vector2(700,500)
 		2:
-			var posicao_poderes = Vector2(300,700)
-			var numero_poderes = round(rand_range(-1,poderes.size()-1))
-			Global.instance_node(poderes[numero_poderes], posicao_poderes, self)
+			posicao_poderes = Vector2(300,700)
 		3:
-			var posicao_poderes = Vector2(1200,200)
-			var numero_poderes = round(rand_range(-1,poderes.size()-1))
-			Global.instance_node(poderes[numero_poderes], posicao_poderes, self)
+			posicao_poderes = Vector2(1200,200)
 		4:
-			var posicao_poderes = Vector2(700,1000)
-			var numero_poderes = round(rand_range(-1,poderes.size()-1))
-			Global.instance_node(poderes[numero_poderes], posicao_poderes, self)
+			posicao_poderes = Vector2(700,1000)
 		5:
-			var posicao_poderes = Vector2(-150,20)
-			var numero_poderes = round(rand_range(-1,poderes.size()-1))
-			Global.instance_node(poderes[numero_poderes], posicao_poderes, self)
+			posicao_poderes = Vector2(-150,20)
+
+	
+	var numero_poderes = round(rand_range(-1,poderes.size()-1))
+	Global.instance_node(poderes[numero_poderes], posicao_poderes, self)
 "
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends \"res://Scenes/characters/Enemy_Base.gd\"
-
-func _physics_process(delta):
-	moviemto_basico_inimigo(delta)
-
-
-"
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 23.5, 17 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 24, 17 )
-
-[sub_resource type="PackedScene" id=5]
-_bundled = {
-"conn_count": 2,
-"conns": PoolIntArray( 3, 0, 17, 16, 2, 0, 5, 0, 19, 18, 2, 0 ),
-"editable_instances": [  ],
-"names": PoolStringArray( "Enemy2", "script", "KinematicBody2D", "Sprite", "scale", "texture", "CollisionShape2D", "position", "shape", "enemy", "Area2D", "col", "timer_recuo", "wait_time", "one_shot", "Timer", "_on_Area2D_area_entered", "area_entered", "_on_timer_recuo_timeout", "timeout" ),
-"node_count": 6,
-"node_paths": [  ],
-"nodes": PoolIntArray( -1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 2, 4, 1, 5, 2, 0, 0, 0, 6, 6, -1, 2, 7, 3, 8, 4, 1, 9, 0, 0, 10, 10, -1, 0, 1, 9, 3, 0, 6, 11, -1, 2, 7, 5, 8, 6, 1, 9, 0, 0, 15, 12, -1, 2, 13, 7, 14, 8, 0 ),
-"variants": [ SubResource( 3 ), Vector2( 0.22, 0.22 ), ExtResource( 7 ), Vector2( 1.5, -6 ), SubResource( 2 ), Vector2( 1, -6 ), SubResource( 4 ), 0.1, true ],
-"version": 2
-}
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -1087,8 +1064,8 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 64, 0, 64 )
 
 [node name="Fase" type="Node2D"]
 script = SubResource( 1 )
-inimigos = [ ExtResource( 6 ), SubResource( 5 ) ]
-poderes = [ ExtResource( 3 ), ExtResource( 8 ) ]
+inimigos = [ ExtResource( 6 ), ExtResource( 4 ) ]
+poderes = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 7 ) ]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 600, 600 )
@@ -1126,6 +1103,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="timer_dificuldade" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [node name="timer_spawn_boss" type="Timer" parent="."]
@@ -1133,7 +1111,7 @@ wait_time = 20.0
 autostart = true
 
 [node name="timer_spawn_poder" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="timer_spawn_inimigo" to="." method="_on_timer_spawn_inimigo_timeout"]

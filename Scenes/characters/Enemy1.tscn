@@ -6,4 +6,4 @@
 movespeed = 100
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 1, -0.5 )
+position = Vector2( 1, -1 )
