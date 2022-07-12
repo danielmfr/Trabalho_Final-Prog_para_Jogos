@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/props/Poder_Basico.gd" type="Script" id=1]
 [ext_resource path="res://PowerUp.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sounds/SFX/Upgrade.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 152.735, 149.907 )
@@ -37,7 +38,7 @@ tracks/0/keys = {
 }
 
 [node name="Poder_Recarga" type="Sprite"]
-modulate = Color( 0.537255, 0.968627, 0.509804, 1 )
+modulate = Color( 0.101961, 0.458824, 0.713726, 1 )
 rotation = 0.785398
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
@@ -54,5 +55,8 @@ shape = SubResource( 1 )
 autoplay = "Aparecer"
 anims/Aparecer = SubResource( 2 )
 anims/RESET = SubResource( 3 )
+
+[node name="SomUpgrade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

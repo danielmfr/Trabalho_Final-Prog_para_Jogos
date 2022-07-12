@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/levels/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/textures/menu.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/textures/CONTROLESBTPRESS.png" type="Texture" id=6]
 [ext_resource path="res://Assets/textures/SAIRBTNORMAL.png" type="Texture" id=7]
 [ext_resource path="res://Assets/textures/SAIRBTPRESS.png" type="Texture" id=8]
+[ext_resource path="res://Assets/sounds/Music/The-Only-Thing-They-Fear-Is-You-_Brutal-8-bit-Remix_-Doom-Eternal-OST-_128kbit_AAC_.wav" type="AudioStream" id=9]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -43,6 +44,11 @@ margin_right = 604.0
 margin_bottom = 535.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
+
+[node name="MusicaTítulo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Controles" to="." method="_on_Controles_pressed"]

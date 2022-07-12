@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/levels/Game_Over.gd" type="Script" id=1]
 [ext_resource path="res://Assets/textures/VOLTARMENUNORM.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/textures/gameover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/textures/TENTARBOBTNORMAL.png" type="Texture" id=5]
 [ext_resource path="res://Assets/textures/TENTARBOBTPRESS.png" type="Texture" id=6]
+[ext_resource path="res://Assets/sounds/SFX/Derrota.wav" type="AudioStream" id=7]
 
 [node name="Control" type="Control"]
 margin_right = 40.0
@@ -32,6 +33,10 @@ margin_right = 471.0
 margin_bottom = 443.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
+
+[node name="SomDerrota" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
 
 [connection signal="pressed" from="voltar_menu" to="." method="_on_voltar_menu_pressed"]
 [connection signal="pressed" from="tentar_novamente" to="." method="_on_tentar_novamente_pressed"]

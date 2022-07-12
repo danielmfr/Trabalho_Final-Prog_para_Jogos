@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/At-Doom_s-Gate-_DOOM-E1M1_-_128kbit_AAC_.wav-e64c44d5ba9670df7cce066a8559ea4a.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/Music/At-Doom_s-Gate-_DOOM-E1M1_-_128kbit_AAC_.wav"
+dest_files=[ "res://.import/At-Doom_s-Gate-_DOOM-E1M1_-_128kbit_AAC_.wav-e64c44d5ba9670df7cce066a8559ea4a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

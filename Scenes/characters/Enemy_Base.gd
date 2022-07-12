@@ -34,6 +34,7 @@ func _on_Area2D_area_entered(area):
 		motion = -motion * recuo
 		atordoado = true
 		$timer_recuo.start()
+		$SomHitEnemy.play()
 
 
 func _on_timer_recuo_timeout():

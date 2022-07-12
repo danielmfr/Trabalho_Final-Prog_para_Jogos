@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Controles.wav-73bfa44bf5b2b481f87612c4067f2534.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/SFX/Controles.wav"
+dest_files=[ "res://.import/Controles.wav-73bfa44bf5b2b481f87612c4067f2534.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

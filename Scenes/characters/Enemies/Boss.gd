@@ -124,6 +124,7 @@ func _on_Death_Area_area_entered(area):
 		damage_self(Global.jogador.dano)
 		motion = -motion * recuo
 		atordoado = true
+		$SomHitBoss.play()
 		$timer_recuo.start()
 	
 func _on_timer_recuo_timeout():

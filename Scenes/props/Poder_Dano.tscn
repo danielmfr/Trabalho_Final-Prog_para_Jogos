@@ -3,6 +3,6 @@
 [ext_resource path="res://Scenes/props/Poder_Recarga.tscn" type="PackedScene" id=1]
 
 [node name="Poder_Dano" instance=ExtResource( 1 )]
-modulate = Color( 0.486275, 0.129412, 0.596078, 1 )
+modulate = Color( 0.156863, 0.129412, 0.596078, 1 )
 modificador_variavel_jogador = "dano"
 valor_variavel_jogador = 3.0

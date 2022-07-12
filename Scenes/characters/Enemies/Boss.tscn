@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/characters/Enemies/Boss.gd" type="Script" id=1]
 [ext_resource path="res://Assets/textures/Enemy3/Wraith_011.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Scenes/characters/Enemies/Move.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/characters/Enemies/Boss_Heal.gd" type="Script" id=12]
 [ext_resource path="res://Scenes/characters/Enemies/Heal_Wait.gd" type="Script" id=13]
+[ext_resource path="res://Assets/sounds/SFX/Hit.wav" type="AudioStream" id=14]
 [ext_resource path="res://Scenes/characters/Enemies/Charge.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -141,6 +142,9 @@ script = ExtResource( 4 )
 [node name="timer_recuo" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="SomHitBoss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
 
 [connection signal="body_entered" from="Area_Close" to="Area_Close" method="_on_Area_Close_body_entered"]
 [connection signal="body_exited" from="Area_Close" to="Area_Close" method="_on_Area_Close_body_exited"]
