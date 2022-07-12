@@ -29,12 +29,13 @@ func moviemto_basico_inimigo(delta):
 #quando o inimigo receber dano
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("dano"):
+		$SomHitEnemy.play()
 		print("inimigo acertado")
 		vida -= Global.jogador.dano
 		motion = -motion * recuo
 		atordoado = true
 		$timer_recuo.start()
-		$SomHitEnemy.play()
+
 
 
 func _on_timer_recuo_timeout():

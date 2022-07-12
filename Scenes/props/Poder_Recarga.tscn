@@ -38,7 +38,7 @@ tracks/0/keys = {
 }
 
 [node name="Poder_Recarga" type="Sprite"]
-modulate = Color( 0.101961, 0.458824, 0.713726, 1 )
+modulate = Color( 0.231373, 0.847059, 0.717647, 1 )
 rotation = 0.785398
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
