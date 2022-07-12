@@ -26,8 +26,6 @@ func moviemto_basico_inimigo(delta):
 		self.global_position += motion * delta
 	
 
-
-	
 #quando o inimigo receber dano
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("dano"):
@@ -37,7 +35,6 @@ func _on_Area2D_area_entered(area):
 		atordoado = true
 		$timer_recuo.start()
 
-	
 
 func _on_timer_recuo_timeout():
 	atordoado = false
